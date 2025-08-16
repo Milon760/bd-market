@@ -12,7 +12,7 @@ const SignIn = () => {
 
     const navigator = useNavigate()
 
-    const { signInEmailAndPassword, signUpGoogle, userInfo, setUserInfo, successMsg, setSuccessMsg } = useContext(AuthContext)
+    const { signInEmailAndPassword, signUpGoogle, setUserInfo, setErrorMsg } = useContext(AuthContext)
 
 
     const SignInHandle = (e) => {
@@ -23,7 +23,7 @@ const SignIn = () => {
         const email = e.target.email.value;
         const pass = e.target.pass.value;
 
-       
+
 
 
 
@@ -35,7 +35,7 @@ const SignIn = () => {
                 setUserInfo(user)
                 Swal.fire({
                     title: " Success",
-                    text: " Successfuly Sign In ",
+                    text: " Successfully Signed In ",
                     icon: "success"
                 });
                 setTimeout(() => {
@@ -44,7 +44,11 @@ const SignIn = () => {
 
             }).catch(error => {
                 console.error(' have a error ', error);
-                alert('Failed Sign In 33' + error)
+                Swal.fire({
+                    title: "Failed",
+                    text: error.message,
+                    icon: "error",
+                });
             })
 
     }
@@ -59,7 +63,7 @@ const SignIn = () => {
                 setUserInfo(user)
                 Swal.fire({
                     title: " Success",
-                    text: " Successfuly Sign In ",
+                    text: " Successfully Signed In ",
                     icon: "success"
                 });
                 setTimeout(() => {
@@ -68,7 +72,11 @@ const SignIn = () => {
 
             }).catch(error => {
                 console.error(" Have a some error", error);
-                alert('Failed Sign In', error)
+                Swal.fire({
+                    title: "Failed",
+                    text: error.message,
+                    icon: "error",
+                });
 
             })
     }
@@ -110,7 +118,7 @@ const SignIn = () => {
 
                         </div>
                     </div>
-                    <p className='text-right text-cyan-600 hover:underline '> <Link to={'/'}> Forget Password</Link> </p>
+                    <p className='text-right text-cyan-600 hover:underline '> <Link to={'/'}> Forgot Password? </Link> </p>
                     <button
                         type='submit'
                         className='bg-blue-600 w-full p-1 rounded-md text-white font-medium text-lg hover:bg-blue-700 transition duration-200 cursor-pointer'
@@ -131,7 +139,7 @@ const SignIn = () => {
                     </div> */}
                 </form>
                 <p className='text-center text-gray-500 mt-5 font-serif'>
-                    Don't have an acount? <Link to={'/signup'} className='text-blue-600 font-medium px-2 hover:underline'> Sign Up &rarr; </Link>
+                    Don't have an account? <Link to={'/signup'} className='text-blue-600 font-medium px-2 hover:underline'> Sign Up &rarr; </Link>
                 </p>
             </div>
         </div>

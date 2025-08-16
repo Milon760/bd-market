@@ -31,9 +31,9 @@ const MoreDetails = () => {
 
       <div className={`${ mode ? 'bg-slate-600 text-white' : 'bg-white'} p-5 md:flex gap-52 mx-5 shadow mb-10`}>
 
-        <div className='flex items-start gap-5 mb-16 my-10'>
-          <img src={`/${product.image}`} alt="" className='w-44 bg-white border p-2 rounded mx-auto ' />
-          <img src={`/${product.moreImage}`} alt="" className=' w-44 border bg-white p-2 rounded mx-auto ' />
+        <div className='flex items-start gap-3 sm:gap-5 mb-16 my-10'>
+          <img src={`/${product.image}`} alt="" className='w-36 sm:w-44 bg-white border p-2 rounded mx-auto ' />
+          <img src={`/${product.moreImage}`} alt="" className=' w-36 sm:w-44 border bg-white p-2 rounded mx-auto ' />
         </div>
 
         <div>

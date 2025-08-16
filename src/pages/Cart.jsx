@@ -41,15 +41,15 @@ const Cart = () => {
 
 
   return (
-    <div className='flex flex-col justify-center items-center h-[87vh]'>
-      <div className=' w-lg sm:w-xl md:w-3xl bg-white py-2 rounded shadow mt-32'>
+    <div className=' h-screen flex flex-col justify-center items-center'>
+      <div className=' w-[99%] sm:w-[90%] md:w-[80%] lg:w-[60%] bg-white py-2 px-2 rounded shadow shadow-black mt-32'>
         <h1 className=' text-2xl md:text-3xl lg:text-4xl text-center font-bold text-gray-500 mb-6 md:mb-10 lg:mb-16 pt-5'> Shoping Cart </h1>
         <hr />
 
         <ul className='max-h-[500px] overflow-y-auto'>
           {
             productData.length === 0 ? <p className='text-center text-xl mt-3.5'> Cart is Empty </p> :
-              productData.map(product => <div key={product.id} className='bg-white flex  gap-5 mb-4 p-1 mx-5 shadow rounded relative'>
+              productData.map(product => <div key={product.id} className='bg-white flex  gap-5 mb-4 p-1 shadow rounded relative'>
                 <img src={product.image} alt="product photo" className='w-32' />
                 <div>
                   <h1 className='text-xl font-medium my-2'> {product.name} </h1>

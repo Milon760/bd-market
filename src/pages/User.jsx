@@ -27,7 +27,7 @@ const User = () => {
 
   return (
     <div className=' h-[87vh] pt-32'>
-      <h1 className={`text-2xl md:text-3xl lg:text-4xl text-center font-bold ${mode ? 'text-white' : 'text-gray-500'} mb-6 md:mb-10 lg:mb-16'`}> Hello, Welcome To BD MARKET </h1>
+      <h1 className={`text-2xl md:text-3xl lg:text-4xl text-center font-bold ${mode ? 'text-white' : 'text-gray-500'} mb-6 md:mb-10 lg:mb-16'`}> Hello, Welcome To My <span className='text-cyan-500 font-extrabold'> BD </span><span className='text-yellow-500 font-extrabold'>MARKET</span> </h1>
 
       {
         userInfo ?

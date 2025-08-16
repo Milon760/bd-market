@@ -11,12 +11,11 @@ import Swal from 'sweetalert2'
 const SignUp = () => {
 
     const [show, setShow] = useState(false);
-    const [show1, setShow1] = useState(false);
-    const [errorMsg, setErrorMsg] = useState('')
+    const [confirmPass, setConfirmPass] = useState(false);
 
     const navigator = useNavigate()
 
-    const { signUpEmailPassword, setUserInfo, successMsg, setSuccessMsg } = useContext(AuthContext)
+    const { signUpEmailPassword, setUserInfo, errorMsg, setErrorMsg } = useContext(AuthContext)
 
     const formHandle = (e) => {
         e.preventDefault();
@@ -24,18 +23,18 @@ const SignUp = () => {
         const name = e.target.fullName.value;
         const email = e.target.email.value;
         const pass = e.target.pass.value;
-        const conframPass = e.target.conPass.value;
+        const confirmPass = e.target.conPass.value;
 
         const strongPwd = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()[\]{}\-_+~`|\\:;'",.<>/?])\S{6,}$/
 
 
-        if (pass !== conframPass) {
-            setErrorMsg("Password do not match.")
+        if (pass !== confirmPass) {
+            setErrorMsg("Passwords do not match.")
             return;
         }
 
-        if (!strongPwd.test(conframPass)) {
-            setErrorMsg('password must have at least 6 cher. including uppercase, lowercase, number and special chearcter.')
+        if (!strongPwd.test(confirmPass)) {
+            setErrorMsg('Password must have at least 6 characters, including uppercase, lowercase, a number, and a special character.')
             return;
         }
 
@@ -53,7 +52,7 @@ const SignUp = () => {
                     })
                     Swal.fire({
                         title: " Success",
-                        text: " Successfuly Sign Up ",
+                        text: " Successfully Signed Up ",
                         icon: "success"
                     });
                     setTimeout(() => {
@@ -62,12 +61,20 @@ const SignUp = () => {
 
                 }).catch(error => {
                     console.error('have a some error', error);
-                    alert('Failed Update Profile '+ error.message)
+                    Swal.fire({
+                        title: "Failed",
+                        text: error.message,
+                        icon: "error",
+                    });
                 })
 
             }).catch(error => {
                 console.error('have a some error', error);
-                alert('Failed Sign Up '+ error.message)
+                Swal.fire({
+                    title: "Failed",
+                    text: error.message,
+                    icon: "error",
+                });
             })
 
 
@@ -91,7 +98,7 @@ const SignUp = () => {
                         <input type="email" name="email" id="email" placeholder='Exampale@gmail.com' required className=' w-full py-2 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600' />
                     </div>
                     <div className=' my-3 relative'>
-                        <label htmlFor="pass" className='block text-gray-600 mb-1 font-medium'> Password </label>
+                        <label htmlFor="pass" className='block text-gray-600 mb-1 font-medium'> Password : </label>
                         <div className='flex items-center'>
                             <input type={show ? 'text' : 'password'} name='pass' id='pass' placeholder='********' required className=' w-full py-2 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600' />
                             {show ? <IoEyeOutline onClick={() => setShow(!show)} className=' absolute right-3' /> :
@@ -100,12 +107,12 @@ const SignUp = () => {
                         </div>
                     </div>
                     <div className=' mt-3 mb-1 relative'>
-                        <label htmlFor="conPass" className='block text-gray-600 mb-1 font-medium'> Confram Password </label>
+                        <label htmlFor="conPass" className='block text-gray-600 mb-1 font-medium'> Confirm Password : </label>
                         <div className='flex items-center'>
-                            <input type={show1 ? 'text' : 'password'} name='conPass' id='conPass' placeholder='********' required className=' w-full py-2 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600' />
+                            <input type={confirmPass ? 'text' : 'password'} name='conPass' id='conPass' placeholder='********' required className=' w-full py-2 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600' />
 
-                            {show1 ? <IoEyeOutline onClick={() => setShow1(!show1)} className=' absolute right-3' /> :
-                                <IoEyeOffOutline onClick={() => setShow1(!show1)} className=' absolute right-3' />
+                            {confirmPass ? <IoEyeOutline onClick={() => setConfirmPass(!confirmPass)} className=' absolute right-3' /> :
+                                <IoEyeOffOutline onClick={() => setConfirmPass(!confirmPass)} className=' absolute right-3' />
                             }
                         </div>
 
@@ -113,12 +120,12 @@ const SignUp = () => {
                     <span className='text-orange-600'> {errorMsg} </span>
                     <div className='my-3'>
                         <input type="checkbox" id="check" required className='cursor-pointer' />
-                        <label htmlFor="check"> I agree tothe <Link to={'/'} className='text-cyan-600'> Terme & Condition </Link></label>
+                        <label htmlFor="check"> I agree to the <Link to={'/'} className='text-cyan-600'> Terms & Conditions </Link></label>
                     </div>
                     <button className='w-full bg-blue-600 rounded-md font-medium py-1 text-white hover:bg-blue-700 transition duration-200'> Sign Up </button>
                 </form>
                 <p className='text-center text-gray-500 mt-5 font-serif'>
-                    Alredy have an acount? <Link to={'/signin'} className='text-blue-600 font-medium px-2 hover:underline'> Sign In &rarr; </Link>
+                    Already have an account? <Link to={'/signin'} className='text-blue-600 font-medium px-2 hover:underline'> Sign In &rarr; </Link>
                 </p>
             </div>
         </div>
