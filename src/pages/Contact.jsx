@@ -98,18 +98,18 @@ const Contact = () => {
 
       </div>
 
-      <div className={`flex justify-center items-center gap-6 text-2xl p-8 mx-5 rounded ${mode ? 'bg-slate-600 text-white' : 'bg-white'} shadow`}>
+      <div className={`flex justify-center items-center gap-6 text-2xl h-24 mx-5 rounded ${mode ? 'bg-slate-600 text-white' : 'bg-white'} shadow`}>
         <a href="https://github.com/Milon760" target="_blank" rel="noopener noreferrer">
-          <FaGithub className='text-3xl transition-all duration-200 hover:text-amber-300' />
+          <FaGithub className='text-3xl transition-all duration-200 hover:text-amber-300 hover:text-4xl' />
         </a>
-        <a href="https://www.linkedin.com/in/md-milon-mia-5186a8379" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin className='text-3xl transition-all duration-200 hover:text-amber-300' />
+        <a href="https://www.linkedin.com/in/md-milon-mia" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin className='text-3xl transition-all duration-200 hover:text-amber-300 hover:text-4xl' />
         </a>
         <a href="https://www.facebook.com/mdmilonmia.milon.10048" target="_blank" rel="noopener noreferrer">
-          <FaFacebook className='text-3xl transition-all duration-200 hover:text-amber-300' />
+          <FaFacebook className='text-3xl transition-all duration-200 hover:text-amber-300 hover:text-4xl' />
         </a>
         <a href="https://www.instagram.com/mdmilonmiah2005" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className='text-3xl transition-all duration-200 hover:text-amber-300' />
+          <FaInstagram className='text-3xl transition-all duration-200 hover:text-amber-300 hover:text-4xl' />
         </a>
       </div>
 
